@@ -4,6 +4,7 @@ import React, { useState } from "react";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [validationMessage, setValidationMessage] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -24,20 +25,31 @@ const Login = () => {
       return;
     }
 
-    try {
-      const response = await axios.post(
+    const response = await axios
+      .post(
         "http://localhost:3000/api/users/signin",
         {
           emailAddress: email,
           password,
+        },
+        {
+          withCredentials: true,
         }
-      );
-      console.log("API Response", response);
-    } catch (error) {
-      console.error("Error occurred while calling API", error);
-      alert("Error Occurred while login");
-      return;
-    }
+      )
+      .then((response) => {
+        console.log("Success Response", response);
+        setValidationMessage("");
+      })
+      .catch((response) => {
+        console.log("Error Response", response);
+        const { message } = response.response.data;
+        if (response.response.status === 400) {
+          setValidationMessage(message);
+          return;
+        }
+        alert("Error Occurred while calling backend");
+        return;
+      });
   };
 
   return (
@@ -63,6 +75,14 @@ const Login = () => {
           required
         />
         <br />
+        <br />
+
+        {validationMessage.trim().length > 0 ? (
+          <span style={{ color: "red" }}>{validationMessage}</span>
+        ) : (
+          ""
+        )}
+
         <br />
 
         <button type="button" onClick={handleLogin}>
