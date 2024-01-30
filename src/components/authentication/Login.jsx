@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [validationMessage, setValidationMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -37,8 +39,13 @@ const Login = () => {
         }
       )
       .then((response) => {
-        console.log("Success Response", response);
-        setValidationMessage("");
+        const { data } = response.data;
+        if (!data.isError) {
+          navigate("/dashboard");
+        } else {
+          alert(`Unsuccessful response with message: ${data.message}`);
+          return;
+        }
       })
       .catch((response) => {
         console.log("Error Response", response);
