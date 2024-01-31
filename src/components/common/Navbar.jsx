@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const [user, setUser] = useState({ name: "John Doe" });
   const navigate = useNavigate();
+  const loggedInUser =
+    localStorage.getItem("loggedInUser") != null
+      ? JSON.parse(localStorage.getItem("loggedInUser"))
+      : null;
 
   const handleLogout = async () => {
     const response = await axios
@@ -18,7 +21,7 @@ const Navbar = () => {
       .then((response) => {
         const { data } = response.data;
         if (!data.isError) {
-          // * Delete local storage. (Frontend State)
+          localStorage.removeItem("loggedInUser");
           navigate("/login");
         } else {
           alert(`Unsuccessful response with message: ${data.message}`);
@@ -42,15 +45,8 @@ const Navbar = () => {
       <div className="navbar">
         <div className="brand">Authentication App</div>
         <div className="menu">
-          {user ? (
-            <>
-              <div className="welcome">Welcome, {user.name}!</div>
-              <button onClick={handleLogout}>Logout</button>
-            </>
-          ) : (
-            // Add login link or any other authentication logic here
-            <div>Login</div>
-          )}
+          <div className="welcome">Welcome, {loggedInUser?.fullName}!</div>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       </div>
     </nav>

@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("fahimnasir1993@gmail.com");
+  const [password, setPassword] = useState("000000");
   const [validationMessage, setValidationMessage] = useState("");
   const navigate = useNavigate();
 
@@ -39,8 +39,11 @@ const Login = () => {
         }
       )
       .then((response) => {
-        const { data } = response.data;
-        if (!data.isError) {
+        const apiResponse = response.data;
+
+        if (apiResponse.isError === false) {
+          const loggedInUser = apiResponse.data;
+          localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
           navigate("/dashboard");
         } else {
           alert(`Unsuccessful response with message: ${data.message}`);
@@ -102,7 +105,7 @@ const Login = () => {
           <a href="/forgot-password">Forgot Password?</a>
         </p>
         <p>
-          Don't have an account? <a href="/signup">Sign Up</a>
+          Don't have an account? <a href="/signUp">Sign Up</a>
         </p>
       </div>
     </div>
