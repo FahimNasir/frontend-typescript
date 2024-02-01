@@ -6,6 +6,7 @@ import "./index.css";
 import Login from "./components/authentication/Login.jsx";
 import Dashboard from "./components/users/Dashboard.jsx";
 import SignUp from "./components/authentication/SignUp.jsx";
+import ForgotPassword from "./components/authentication/ForgotPassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/signUp",
     element: <SignUp />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
   },
 ]);
 
