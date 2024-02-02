@@ -9,6 +9,10 @@ const Navbar = () => {
       ? JSON.parse(localStorage.getItem("loggedInUser"))
       : null;
 
+  const handleChangePassword = () => {
+    navigate("/change-password");
+  };
+
   const handleLogout = async () => {
     const response = await axios
       .post(
@@ -46,6 +50,11 @@ const Navbar = () => {
         <div className="brand">Authentication App</div>
         <div className="menu">
           <div className="welcome">Welcome, {loggedInUser?.fullName}!</div>
+          <div>
+            <a href="#" onClick={handleChangePassword}>
+              Change Password
+            </a>
+          </div>
           <button onClick={handleLogout}>Logout</button>
         </div>
       </div>
