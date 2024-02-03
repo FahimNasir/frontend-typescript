@@ -47,10 +47,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Routes>
         <Route element={<PrivateRoutes />}>
-          <Route element={<App />} path="/" exact />
           <Route element={<Dashboard />} path="/dashboard" exact />
           <Route element={<ChangePassword />} path="/change-password" />
         </Route>
+        <Route element={<App />} path="/" exact />
         <Route element={<Login />} path="/login" />
         <Route element={<SignUp />} path="/signUp" />
         <Route element={<ForgotPassword />} path="/forgot-password" />
