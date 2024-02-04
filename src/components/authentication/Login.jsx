@@ -7,8 +7,6 @@ const Login = () => {
   const [password, setPassword] = useState("123456");
   const [validationMessage, setValidationMessage] = useState("");
   const navigate = useNavigate();
-  const [count, setCount] = useState(0);
-  const [count2, setCount2] = useState(0);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -64,8 +62,6 @@ const Login = () => {
       });
   };
 
-  //* When to use useEffect() hook.
-
   //* Navigate to some other screen
   useEffect(() => {
     if (localStorage.getItem("loggedInUser") != null) {
@@ -74,23 +70,6 @@ const Login = () => {
 
     // * Calling API here is WRONG
   });
-
-  const disableWholeUI = () => {
-    console.log("Function called!");
-  };
-
-  // *If you want to load some data on component render
-  // *If you want to call a server backend api and get some data.
-  // useEffect(() => {
-  //   console.log("Login Screen!!");
-  // }, []);
-
-  useEffect(() => {
-    //console.log("Login Screen!!");
-    disableWholeUI();
-    //UpdateActiveInactiveUI();
-    //Call API MarkUserActive(true)
-  }, [count]);
 
   return (
     <div>
@@ -137,23 +116,6 @@ const Login = () => {
         <p>
           Don't have an account? <a href="/signUp">Sign Up</a>
         </p>
-        <p>Count Old: {count}</p>
-        <p>Count New: {count2}</p>
-        <button
-          onClick={() => {
-            setCount(count + 1);
-          }}
-        >
-          Increment
-        </button>
-
-        <button
-          onClick={() => {
-            setCount2(count2 + 1);
-          }}
-        >
-          Increment New
-        </button>
       </div>
     </div>
   );

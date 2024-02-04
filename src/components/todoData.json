@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Task 1",
+    "description": "Complete project proposal",
+    "dueDate": "2024-02-10T00:00:00.000Z"
+  },
+  {
+    "name": "Task 2",
+    "description": "Buy groceries",
+    "dueDate": "2024-02-15T00:00:00.000Z"
+  },
+  {
+    "name": "Task 3",
+    "description": "Prepare for presentation",
+    "dueDate": "2024-02-18T00:00:00.000Z"
+  },
+  {
+    "name": "Task 4",
+    "description": "Go for a jog",
+    "dueDate": "2024-02-12T00:00:00.000Z"
+  },
+  {
+    "name": "Task 5",
+    "description": "Read a chapter of a book",
+    "dueDate": "2024-02-14T00:00:00.000Z"
+  },
+  {
+    "name": "Task 6",
+    "description": "Attend team meeting",
+    "dueDate": "2024-02-17T00:00:00.000Z"
+  },
+  {
+    "name": "Task 7",
+    "description": "Pay bills",
+    "dueDate": "2024-02-20T00:00:00.000Z"
+  },
+  {
+    "name": "Task 8",
+    "description": "Clean the house",
+    "dueDate": "2024-02-25T00:00:00.000Z"
+  },
+  {
+    "name": "Task 9",
+    "description": "Review code changes",
+    "dueDate": "2024-02-22T00:00:00.000Z"
+  },
+  {
+    "name": "Task 110",
+    "description": "Plan weekend activities",
+    "dueDate": "2024-02-28T00:00:00.000Z"
+  }
+]
