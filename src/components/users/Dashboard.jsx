@@ -1,12 +1,14 @@
 import Navbar from "../common/Navbar";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import todoData from "../todoData.json";
+import MyContext from "../../context/MyContext";
 
 const Dashboard = () => {
   const [todoList, setTodoList] = useState([]);
   const [count, setCount] = useState(0);
   const [countryId, setCountryId] = useState("");
+  const { myState, updateState } = useContext(MyContext);
 
   useEffect(() => {
     const fetchTodoList = async () => {
@@ -53,6 +55,8 @@ const Dashboard = () => {
     <>
       <Navbar />
       <div>
+        Context Value: {myState}
+        <br />
         <p>Refresh Count: {count}</p>
         <button
           onClick={() => {

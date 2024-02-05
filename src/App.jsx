@@ -1,13 +1,25 @@
+import { useContext } from "react";
 import "./App.css";
-import Login from "./components/authentication/Login";
 import { useNavigate } from "react-router-dom";
+import MyContext from "./context/MyContext";
 
 function App() {
   const navigate = useNavigate();
+  const { myState, updateState } = useContext(MyContext);
   return (
     <>
-      <h1>Home Page</h1>
+      <h1>Context State - {myState}</h1>
+
+      <button
+        onClick={() => {
+          updateState("New Value");
+        }}
+      >
+        Update Context
+      </button>
+      <br />
       <a
+        href="#"
         onClick={() => {
           navigate("/login");
         }}
